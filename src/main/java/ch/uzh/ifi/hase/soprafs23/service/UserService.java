@@ -39,6 +39,17 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
+    public User verifyUser(User newUser) {
+        User user = userRepository.findByUsername(newUser.getUsername());
+        if(user==null){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User does not exist");
+        }
+        if(!user.getPassword().equals(newUser.getPassword())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Incorrect password");
+        }
+        return user;
+    }
+
     public User createUser(User newUser) {
         newUser.setToken(UUID.randomUUID().toString());
         newUser.setStatus(UserStatus.OFFLINE);
@@ -68,8 +79,11 @@ public class UserService {
 
         String baseErrorMessage = "The %s provided %s not unique. Therefore, the user could not be created!";
         if (userByUsername != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+            if(!userByUsername.getPassword().equals(userToBeCreated.getPassword())){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+            }
         }
-
     }
+
+
 }
