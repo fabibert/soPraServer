@@ -18,7 +18,8 @@ import java.util.List;
  * The controller will receive the request and delegate the execution to the
  * UserService and finally return the result.
  */
-@RestController("/users")
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
@@ -51,7 +52,7 @@ public class UserController {
         User userInput = DTOMapper.INSTANCE.convertUserPostDTOtoEntity(userPostDTO);
 
         // create user
-        User createdUser = userService.createUser(userInput);
+        User createdUser = userService.verifyUser(userInput);
         // convert internal representation of user back to API
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(createdUser);
     }
