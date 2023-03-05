@@ -42,14 +42,6 @@ public class User implements Serializable {
     @Column(nullable = false)
     private UserStatus status;
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
@@ -83,6 +75,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getToken() {

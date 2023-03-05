@@ -13,16 +13,24 @@ public class UserGetDTO {
     //TODO: maybe Remove from here or check that it is used
     private UserStatus status;
 
-    private LocalDateTime creationDate;
+    private LocalDateTime createDate;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     private String password;
 
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
     public Long getId() {
