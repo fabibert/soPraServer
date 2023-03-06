@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -38,6 +39,10 @@ public class UserService {
 
     public List<User> getUsers() {
         return this.userRepository.findAll();
+    }
+
+    public User getUser(Long userid) {
+        return this.userRepository.findById(userid).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id is not found"));
     }
 
     public User verifyUser(User newUser) {

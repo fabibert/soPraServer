@@ -28,6 +28,17 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/{userid}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public UserGetDTO getUser(@PathVariable Long userid) {
+        // fetch all users in the internal representation
+        User user = userService.getUser(userid);
+
+        // convert each user to the API representation
+        return DTOMapper.INSTANCE.convertEntityToUserGetDTO(user);
+    }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
