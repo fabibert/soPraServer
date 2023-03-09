@@ -42,7 +42,7 @@ public class UserService {
     }
 
     public User getUser(Long userid) {
-        return this.userRepository.findById(userid).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id is not found"));
+        return this.userRepository.findById(userid).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Id is not found"));
     }
 
     public User verifyUser(User newUser) {
@@ -85,7 +85,7 @@ public class UserService {
 
         String baseErrorMessage = "The %s provided %s not unique. Therefore, the user could not be created!";
         if (userByUsername != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format(baseErrorMessage, "username", "is"));
         }
     }
 
