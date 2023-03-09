@@ -7,22 +7,11 @@ import java.time.LocalDateTime;
 public class UserGetDTO {
 
     private Long id;
-    private String name;
+    private String token;
     private String username;
-
-    //TODO: maybe Remove from here or check that it is used
     private UserStatus status;
-
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
+    private LocalDateTime birthDay;
     private LocalDateTime creationDate;
-
     public LocalDateTime getBirthDay() {
         return birthDay;
     }
@@ -30,19 +19,6 @@ public class UserGetDTO {
     public void setBirthDay(LocalDateTime birthDay) {
         this.birthDay = birthDay;
     }
-
-    private LocalDateTime birthDay;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    private String password;
-
 
     public Long getId() {
         return id;
@@ -52,12 +28,12 @@ public class UserGetDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getToken() {
+        return token;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getUsername() {
@@ -74,5 +50,13 @@ public class UserGetDTO {
 
     public void setStatus(UserStatus status) {
         this.status = status;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }

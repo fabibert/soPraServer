@@ -88,4 +88,15 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
         }
     }
+
+    public void updateUser(User userInput) {
+        User currentUser = getUser(userInput.getId());
+        if(!userInput.getUsername().equals("")){
+            currentUser.setUsername(userInput.getUsername());
+        }
+        if(userInput.getBirthDay() != null ) {
+            currentUser.setBirthDay(userInput.getBirthDay());
+        }
+        userRepository.save(currentUser);
+    }
 }
